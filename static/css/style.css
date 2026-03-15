@@ -1,0 +1,51 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#141E30,#243B55);
+    color:white;
+    min-height:100vh;
+}
+
+.navbar{
+    background:#0f172a;
+}
+
+.container-box{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius:15px;
+    padding:30px;
+    margin-top:40px;
+}
+
+.card{
+    border:none;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+input,select{
+    background:rgba(255,255,255,0.1) !important;
+    border:none !important;
+    color:white !important;
+}
+
+.btn-primary{
+    background:#00c6ff;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#0072ff;
+}
+
+.chart-container{
+    width:70%;
+    margin:auto;
+}
