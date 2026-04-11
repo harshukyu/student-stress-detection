@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — CampusMind</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1f3d;
+      --navy-mid: #162847;
+      --navy-light: #1e3a5f;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --gray: #8a9ab5;
+      --danger: #e05c5c;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .left-panel {
+      width: 42%;
+      background: var(--navy-mid);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .steps-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .steps-title span { color: var(--gold); }
+
+    .steps-desc {
+      font-size: 14px;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .step-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .step-num {
+      width: 32px; height: 32px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .step-text h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .step-text p {
+      font-size: 12px;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* Right panel */
+    .right-panel {
+      width: 58%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 72px;
+    }
+
+    .form-card {
+      width: 100%;
+      max-width: 460px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .form-header { margin-bottom: 32px; }
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .form-header p { font-size: 14px; color: var(--gray); font-weight: 300; }
+    .divider { width: 40px; height: 2px; background: var(--gold); margin-top: 16px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      background: var(--navy-mid);
+      border: 1px solid rgba(138,154,181,0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+
+    input::placeholder { color: rgba(138,154,181,0.4); }
+
+    .password-hint {
+      font-size: 11px;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .form-footer a { color: var(--gold); text-decoration: none; font-weight: 500; }
+    .form-footer a:hover { color: var(--gold-light); }
+
+    .error-msg {
+      background: rgba(224,92,92,0.12);
+      border: 1px solid rgba(224,92,92,0.3);
+      color: #f08080;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left-panel">
+    <div class="brand">
+      <div class="brand-icon">🧠</div>
+      <div class="brand-name">CampusMind</div>
+    </div>
+    <h2 class="steps-title">Start Your<br><span>Wellness</span><br>Journey</h2>
+    <p class="steps-desc">Join thousands of students building healthier habits with data-driven insights.</p>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-text">
+          <h4>Create Your Account</h4>
+          <p>Set up your secure student profile in seconds.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-text">
+          <h4>Log Daily Metrics</h4>
+          <p>Track sleep, study hours, screen time and mood.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-text">
+          <h4>Get Stress Insights</h4>
+          <p>Receive a personalised stress level assessment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Create Account</h2>
+        <p>Fill in your details to get started</p>
+        <div class="divider"></div>
+      </div>
+
+      {% if error %}
+      <div class="error-msg">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="/register">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Choose a username" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" id="pwd" placeholder="Create password" required />
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" id="cpwd" placeholder="Repeat password" required />
+          </div>
+        </div>
+        <p class="password-hint">Use at least 6 characters with a mix of letters and numbers.</p>
+        <br/>
+        <button type="submit" class="btn-primary">Create Account →</button>
+      </form>
+
+      <div class="form-footer">
+        Already have an account? <a href="/">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      const pwd = document.getElementById('pwd').value;
+      const cpwd = document.getElementById('cpwd').value;
+      if (pwd !== cpwd) {
+        e.preventDefault();
+        alert('Passwords do not match.');
+      }
+    });
+  </script>
+</body>
+</html>
