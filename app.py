@@ -11,8 +11,8 @@ DB = "campusmind.db"
 # =============================================
 # Gmail setup
 # =============================================
-GMAIL_ADDRESS  = "harshgangwar902@gmail.com"   
-GMAIL_APP_PASS = "nocp dgav gyld zigk"    
+GMAIL_ADDRESS  = "your_email@gmail.com"   
+GMAIL_APP_PASS = "xxxx xxxx xxxx xxxx"    
 # =============================================
 
 def get_db():
